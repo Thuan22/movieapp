@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_finder/common/app_color.dart';
 import 'package:flutter_movie_finder/common/app_text.dart';
+import 'package:flutter_movie_finder/model/popular_movie.dart';
+import 'package:flutter_movie_finder/model/upcoming_movie.dart';
+import 'package:flutter_movie_finder/network/api_dio.dart';
 
 import 'components/home_appBar.dart';
 import 'components/home_list_button.dart';
@@ -16,6 +19,17 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  GetPopular popular = GetPopular();
+  String? baseUrl = "https://image.tmdb.org/t/p/original";
+  GetUpcoming upcoming = GetUpcoming();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getMovie();
+    getUpcomingData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,18 +41,20 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         child: Column(
           children: [
-            const HomeAppBar(),
+            HomeAppBar(),
             const SizedBox(
               height: 20,
             ),
-            const HomeTextField(),
+            HomeTextField(),
             const SizedBox(
               height: 26,
             ),
             SingleChildScrollView(
               child: Column(
                 children: [
-                  const HomeBanner(),
+                  HomeBanner(
+                    popular.results ?? [],
+                  ),
                   const SizedBox(
                     height: 20,
                   ),
@@ -59,7 +75,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   const SizedBox(
                     height: 15,
                   ),
-                  UpcomingList(),
+                  UpcomingList(
+                    upcoming.results ?? [],
+                  ),
                   const SizedBox(
                     height: 20,
                   ),
@@ -74,5 +92,26 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
+  }
+
+  void getMovie() {
+    DioCustom.getPopular().then((value) {
+      if (value != null) {
+        setState(() {
+          popular = value;
+          print(popular.toJson().toString());
+        });
+      }
+    });
+  }
+
+  void getUpcomingData() {
+    DioCustom.getUpcoming().then((value) {
+      if (value != null) {
+        setState(() {
+          upcoming = value;
+        });
+      }
+    });
   }
 }

@@ -4,14 +4,14 @@ import 'package:flutter_movie_finder/common/app_image.dart';
 import 'package:flutter_movie_finder/common/app_text.dart';
 
 class HomeAppBar extends StatelessWidget {
-  const HomeAppBar({Key? key}) : super(key: key);
+  HomeAppBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children:  [
-        const Text.rich(
+      children: [
+        Text.rich(
           TextSpan(
             text: AppText.greeting,
             style: TextStyle(fontSize: 18, color: AppColor.textColor),
@@ -23,7 +23,9 @@ class HomeAppBar extends StatelessWidget {
             ],
           ),
         ),
-        Image.asset(AppImage.icNotification,), 
+        Image.asset(
+          AppImage.icNotification,
+        ),
       ],
     );
   }

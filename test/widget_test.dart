@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:flutter_movie_finder/main.dart';
+import 'package:http/http.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
