@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter_movie_finder/UI/detail_screen/detail_Screen.dart';
+import 'package:flutter_movie_finder/UI/main_screen/main_screen.dart';
 
 class UpcomingList extends StatefulWidget {
   const UpcomingList({ Key? key }) : super(key: key);
@@ -12,7 +13,7 @@ class UpcomingList extends StatefulWidget {
 class _UpcomingListState extends State<UpcomingList> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: MediaQuery.of(context).size.height*11/50,
    
       child: Swiper(
@@ -20,12 +21,12 @@ class _UpcomingListState extends State<UpcomingList> {
         itemCount: 3,
         itemBuilder: (c,i) {
           return Container(
-            margin: EdgeInsets.symmetric(horizontal: 10),
+            margin: const EdgeInsets.symmetric(horizontal: 10),
             width: MediaQuery.of(context).size.width *1/3 ,
           
             child: InkWell(
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => DetailScreen() ));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const MainScreen(screen: DetailScreen()) ));
               },
               child: Image.asset("assets/images/poster.jpg",fit: BoxFit.fill,)));
         },

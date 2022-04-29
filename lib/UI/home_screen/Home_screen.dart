@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_finder/common/app_color.dart';
-import 'package:flutter_movie_finder/common/app_image.dart';
 import 'package:flutter_movie_finder/common/app_text.dart';
 
 import 'components/home_appBar.dart';
-import 'components/home_bottomnavigationBar.dart';
 import 'components/home_list_button.dart';
 import 'components/home_search_field.dart';
 import 'components/home_swiper_banner.dart';
@@ -38,7 +36,6 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 26,
             ),
             SingleChildScrollView(
-            
               child: Column(
                 children: [
                   const HomeBanner(),
@@ -51,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   const Padding(
                     padding: EdgeInsets.only(right: 140.0),
-                    child:  Text(
+                    child: Text(
                       AppText.upcoming,
                       style: TextStyle(
                           fontSize: 18,
@@ -59,14 +56,17 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: AppColor.textColor),
                     ),
                   ),
-                  SizedBox(height: 15,),
+                  const SizedBox(
+                    height: 15,
+                  ),
                   UpcomingList(),
-                  SizedBox(height: 20,),
-                  Divider(
-                    height: 1,
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const Divider(
+                    height: 2,
                     color: Colors.grey,
                   ),
-                  HomeBottomNavigationBar(),
                 ],
               ),
             ),

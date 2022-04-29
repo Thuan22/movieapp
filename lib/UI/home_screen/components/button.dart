@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_finder/common/app_color.dart';
-import 'package:flutter_movie_finder/common/app_image.dart';
 
 class HomeButton extends StatelessWidget {
   HomeButton({Key? key, required this.image, required this.text})

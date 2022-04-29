@@ -2,10 +2,11 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_finder/UI/detail_screen/components/button_part.dart';
+import 'package:flutter_movie_finder/UI/detail_screen/components/list_actors.dart';
 import 'package:flutter_movie_finder/UI/detail_screen/components/tag_part.dart';
-import 'package:flutter_movie_finder/UI/detail_screen/components/textField.dart';
+import 'package:flutter_movie_finder/UI/detail_screen/components/text_field.dart';
 import 'package:flutter_movie_finder/UI/detail_screen/components/title_part.dart';
-import 'package:flutter_movie_finder/UI/home_screen/Home_screen.dart';
+import 'package:flutter_movie_finder/UI/home_screen/home_screen.dart';
 import 'package:flutter_movie_finder/UI/home_screen/components/home_bottomnavigationBar.dart';
 import 'package:flutter_movie_finder/common/app_color.dart';
 import 'package:flutter_movie_finder/common/app_image.dart';
@@ -68,7 +69,10 @@ class _DetailScreenState extends State<DetailScreen> {
                   DetailTag(),
                   DetailText(text: text),
                   DetailButton(),
-                  Spacer(),
+                  SizedBox(height: 10,),
+                  DetailActorList(),
+                  
+                  
                 ],
               ),
             ),

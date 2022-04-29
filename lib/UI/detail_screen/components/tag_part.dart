@@ -21,15 +21,15 @@ class DetailTag extends StatelessWidget {
               height: 23,
               // width: MediaQuery.of(context).size.width *7/50,
               alignment: Alignment.center,
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              margin: EdgeInsets.only(top: 19),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              margin: const EdgeInsets.only(top: 19),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                gradient: AppColor.backGroundColor,
+                gradient: AppColor.buttonColor,
               ),
               child: Text(
                 _genres[0],
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16,
                   color: AppColor.textColor,
                 ),
@@ -37,16 +37,16 @@ class DetailTag extends StatelessWidget {
             ),
             Container(
               height: 23,
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              margin: EdgeInsets.only(left: 10, top: 19, right: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              margin: const EdgeInsets.only(left: 10, top: 19, right: 10),
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                gradient: AppColor.backGroundColor,
+                gradient: AppColor.buttonColor,
               ),
               child: Text(
                 _genres[1],
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16,
                   color: AppColor.textColor,
                 ),
@@ -55,8 +55,8 @@ class DetailTag extends StatelessWidget {
             Container(
               height: 23,
               alignment: Alignment.center,
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              margin: EdgeInsets.only(top: 19),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              margin: const EdgeInsets.only(top: 19),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 color: AppColor.imdbColor,
@@ -84,10 +84,10 @@ class DetailTag extends StatelessWidget {
                 fit: BoxFit.fill,
               ),
             ),
-            SizedBox(width: 10,),
+            const SizedBox(width: 10,),
             Container(
               margin: const EdgeInsets.only(top: 19),
-              child: const Icon(Icons.favorite),
+              child: const Icon(Icons.favorite,color: Colors.white,),
             ),
           ],
         )

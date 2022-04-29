@@ -9,7 +9,7 @@ class HomeBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 9 / 100,
+      height: MediaQuery.of(context).size.height * 10 / 100,
       width: double.infinity,
       decoration: BoxDecoration(
         gradient: AppColor.backGroundColor,

@@ -36,11 +36,11 @@ class _HomeTextFieldState extends State<HomeTextField> {
                 Container(
                   width: 2,
                   color: Colors.grey,
-                  margin: EdgeInsets.only(right: 10),
+                  margin: const EdgeInsets.only(right: 10),
                   padding:const EdgeInsets.only(top: 10,bottom: 10),
                 ),
                 Container(
-                  margin: EdgeInsets.only(right: 10),
+                  margin: const EdgeInsets.only(right: 10),
                   child: const Icon(
                     Icons.mic,
                     color: AppColor.textColor,

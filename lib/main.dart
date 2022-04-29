@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_movie_finder/UI/main_screen/main_screen.dart';
 
-
-import 'UI/home_screen/Home_screen.dart';
+import 'UI/home_screen/home_screen.dart';
 
 void main(List<String> args) {
   runApp(const MyApp());
@@ -14,7 +14,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: Scaffold(
+        body: MainScreen(screen: HomeScreen()),
+      ),
     );
   }
 }
