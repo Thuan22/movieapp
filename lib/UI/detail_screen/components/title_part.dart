@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_movie_finder/common/app_color.dart';
 
 class DetailTitle extends StatelessWidget {
-  const DetailTitle({Key? key}) : super(key: key);
+  String title;
+  String subTitle;
+
+  DetailTitle(this.title, this.subTitle);
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      children:const [
+      children: [
         Text(
-          "Thor",
+          title,
           style: TextStyle(
             fontSize: 64,
             fontWeight: FontWeight.w700,
@@ -18,7 +21,7 @@ class DetailTitle extends StatelessWidget {
           // textAlign: TextAlign.center,
         ),
         Text(
-          "The Dark World",
+          subTitle,
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w700,

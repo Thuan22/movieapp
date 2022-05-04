@@ -20,7 +20,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   GetPopular popular = GetPopular();
-  String? baseUrl = "https://image.tmdb.org/t/p/original";
   GetUpcoming upcoming = GetUpcoming();
   @override
   void initState() {
@@ -60,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   HomeListButton(),
                   const SizedBox(
-                    height: 35,
+                    height: 20,
                   ),
                   const Padding(
                     padding: EdgeInsets.only(right: 140.0),

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_movie_finder/model/detail_movie.dart';
 import 'package:flutter_movie_finder/model/popular_movie.dart';
 import 'package:flutter_movie_finder/model/upcoming_movie.dart';
 
@@ -31,6 +32,24 @@ class DioCustom {
       if (response.data != null) {
         GetUpcoming upcoming = GetUpcoming.fromJson(response.data);
         return upcoming;
+      } else {
+        return null;
+      }
+    } catch (e) {
+      print(e);
+      return null;
+    }
+  }
+
+  static Future<GetDetail?> getDetail() async {
+    Dio dio = Dio();
+    int? idMovie;
+    try {
+      final response = await dio.get(
+          "$baseUrl/$idMovie?api_key=e5f6c50b377e940a6a3bee54c9eb07c6&language=en-US");
+      if (response.data != null) {
+        GetDetail detail = GetDetail.fromJson(response.data);
+        return detail;
       } else {
         return null;
       }

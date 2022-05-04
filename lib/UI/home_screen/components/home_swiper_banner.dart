@@ -1,5 +1,7 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_movie_finder/UI/detail_screen/detail_Screen.dart';
+import 'package:flutter_movie_finder/UI/main_screen/main_screen.dart';
 import 'package:flutter_movie_finder/model/popular_movie.dart';
 
 class HomeBanner extends StatelessWidget {
@@ -11,16 +13,25 @@ class HomeBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height * 4 / 20,
+      height: MediaQuery.of(context).size.height * 6 / 25,
       child: Swiper(
         loop: true,
         itemCount: list.length,
         viewportFraction: 0.8,
         scale: 0.9,
         itemBuilder: (context, index) {
-          return Image.network(
-            '${baseUrl + list[index].posterPath.toString()}',
-            fit: BoxFit.fill,
+          return InkWell(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MainScreen(screen: DetailScreen()),
+                  ));
+            },
+            child: Image.network(
+              '${baseUrl + list[index].posterPath.toString()}',
+              fit: BoxFit.fill,
+            ),
           );
         },
         pagination: const SwiperPagination(

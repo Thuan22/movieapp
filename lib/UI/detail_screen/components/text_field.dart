@@ -20,26 +20,17 @@ import 'package:readmore/readmore.dart';
 //   }
 // }
 
-class DetailText extends StatefulWidget {
-  DetailText({Key? key, required this.text}) : super(key: key);
-  final String text;
-  @override
-  State<DetailText> createState() => _DetailTextState();
-}
+class DetailText extends StatelessWidget {
+  String text;
 
-class _DetailTextState extends State<DetailText> {
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
+  DetailText(this.text);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 10),
       child: ReadMoreText(
-        widget.text,
+        text,
         trimLines: 3,
         colorClickableText: Colors.blue,
         trimMode: TrimMode.Line,

@@ -11,7 +11,7 @@ class UpcomingList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 11 / 50,
+      height: MediaQuery.of(context).size.height * 12 / 50,
       child: Swiper(
         itemCount: list.length,
         itemBuilder: (context, index) {
@@ -24,7 +24,7 @@ class UpcomingList extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                             builder: (context) =>
-                                const MainScreen(screen: DetailScreen())));
+                                MainScreen(screen: DetailScreen())));
                   },
                   child: Image.network(
                     "${baseUrl + list[index].posterPath.toString()}",
@@ -35,7 +35,6 @@ class UpcomingList extends StatelessWidget {
         // scale: 0.9,
         pagination: const SwiperPagination(
           alignment: Alignment.bottomCenter,
-          margin: EdgeInsets.only(top: 25),
           builder: DotSwiperPaginationBuilder(
             size: 6,
             activeSize: 6,

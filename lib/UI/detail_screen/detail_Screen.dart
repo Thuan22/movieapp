@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_finder/UI/detail_screen/components/button_part.dart';
 import 'package:flutter_movie_finder/UI/detail_screen/components/list_actors.dart';
@@ -8,6 +6,9 @@ import 'package:flutter_movie_finder/UI/detail_screen/components/text_field.dart
 import 'package:flutter_movie_finder/UI/detail_screen/components/title_part.dart';
 import 'package:flutter_movie_finder/common/app_color.dart';
 import 'package:flutter_movie_finder/common/app_image.dart';
+import 'package:flutter_movie_finder/model/popular_movie.dart';
+import 'package:flutter_movie_finder/model/upcoming_movie.dart';
+import 'package:flutter_movie_finder/network/api_dio.dart';
 
 class DetailScreen extends StatefulWidget {
   const DetailScreen({Key? key}) : super(key: key);
@@ -17,8 +18,12 @@ class DetailScreen extends StatefulWidget {
 }
 
 class _DetailScreenState extends State<DetailScreen> {
-  final text =
-      "When the Dark Elves attempt to plungge the universe into the darkness, Thor must embark on a perilous and personal journey that will reunite him with doctor Jane asd 1231 131 asd a sd ";
+  GetUpcoming upcoming = GetUpcoming();
+  GetPopular popular = GetPopular();
+  int? idUpcoming;
+  int? idPopular;
+  String baseUrl = "https://api.themoviedb.org/3/movie/";
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -42,7 +47,7 @@ class _DetailScreenState extends State<DetailScreen> {
               },
               child: Image.asset(
                 AppImage.icBackButton,
-                color: Colors.white,
+                color: AppColor.textColor,
               ),
             ),
           ),
@@ -63,14 +68,17 @@ class _DetailScreenState extends State<DetailScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  DetailTitle(),
-                  DetailTag(),
-                  DetailText(text: text),
+                  DetailTitle("1", "@"),
+                  DetailTag(["Drama", "2"]),
+                  DetailText("text: text"),
                   DetailButton(),
                   SizedBox(
                     height: 10,
                   ),
-                  DetailActorList(),
+                  DetailActorList([
+                    "assets/images/thor.png",
+                    "assets/images/thor.png",
+                  ], "1", "2"),
                 ],
               ),
             ),
@@ -78,5 +86,33 @@ class _DetailScreenState extends State<DetailScreen> {
         ],
       ),
     );
+  }
+
+  void getIDUpcoming() {
+    DioCustom.getUpcoming().then((value) {
+      if (value != null) {
+        setState(() {
+          upcoming = value;
+          idUpcoming = upcoming.results?[0].id ?? 00;
+        });
+      } else {
+        return null;
+      }
+    });
+  }
+
+  void getIDPopular() {
+    DioCustom.getPopular().then((value) {
+      if (value != null) {
+        setState(
+          () {
+            popular = value;
+            idPopular = popular.results?[0].id ?? 00;
+          },
+        );
+      } else {
+        return null;
+      }
+    });
   }
 }

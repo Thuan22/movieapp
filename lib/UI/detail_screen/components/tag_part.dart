@@ -3,14 +3,12 @@ import 'package:flutter_movie_finder/common/app_color.dart';
 import 'package:flutter_movie_finder/common/app_image.dart';
 
 class DetailTag extends StatelessWidget {
-  const DetailTag({Key? key}) : super(key: key);
+  List<String> _genres = [];
+
+  DetailTag(this._genres);
 
   @override
   Widget build(BuildContext context) {
-    List<String> _genres = [
-      'Action',
-      '16+',
-    ];
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -84,10 +82,15 @@ class DetailTag extends StatelessWidget {
                 fit: BoxFit.fill,
               ),
             ),
-            const SizedBox(width: 10,),
+            const SizedBox(
+              width: 10,
+            ),
             Container(
               margin: const EdgeInsets.only(top: 19),
-              child: const Icon(Icons.favorite,color: Colors.white,),
+              child: const Icon(
+                Icons.favorite,
+                color: Colors.white,
+              ),
             ),
           ],
         )
