@@ -1,82 +1,85 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_finder/common/app_color.dart';
 import 'package:flutter_movie_finder/common/app_image.dart';
+import 'package:flutter_movie_finder/model/detail_movie.dart';
 
-class DetailTag extends StatelessWidget {
-  List<String> _genres = [];
+class DetailTag extends StatefulWidget {
+  List<Genres> _genres = [];
+  double _imdb;
 
-  DetailTag(this._genres);
+  DetailTag(this._genres, this._imdb);
 
+  @override
+  State<DetailTag> createState() => _DetailTagState();
+}
+
+class _DetailTagState extends State<DetailTag> {
+  bool _isLike = true;
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Row(
-          // mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              height: 23,
-              // width: MediaQuery.of(context).size.width *7/50,
-              alignment: Alignment.center,
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              margin: const EdgeInsets.only(top: 19),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                gradient: AppColor.buttonColor,
-              ),
-              child: Text(
-                _genres[0],
-                style: const TextStyle(
-                  fontSize: 16,
-                  color: AppColor.textColor,
+        SizedBox(
+          height: 30,
+          width: 160,
+          // width: MediaQuery.of(context).size.width * 1 / 2,
+          child: ListView.separated(
+            scrollDirection: Axis.horizontal,
+            shrinkWrap: true,
+            itemBuilder: (context, index) {
+              return Container(
+                height: 23,
+                // width: 50,
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                margin: EdgeInsets.only(top: 10),
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  gradient: AppColor.buttonColor,
                 ),
-              ),
-            ),
-            Container(
-              height: 23,
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              margin: const EdgeInsets.only(left: 10, top: 19, right: 10),
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                gradient: AppColor.buttonColor,
-              ),
-              child: Text(
-                _genres[1],
-                style: const TextStyle(
-                  fontSize: 16,
-                  color: AppColor.textColor,
+                child: Text(
+                  widget._genres[index].name ?? "a",
+                  style: const TextStyle(
+                    fontSize: 14,
+                    color: AppColor.textColor,
+                  ),
                 ),
-              ),
-            ),
-            Container(
-              height: 23,
-              alignment: Alignment.center,
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              margin: const EdgeInsets.only(top: 19),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: AppColor.imdbColor,
-              ),
-              child: RichText(
-                text: const TextSpan(
-                    text: "IMDb ",
-                    style: TextStyle(fontSize: 12, color: Colors.black),
-                    children: [
-                      TextSpan(
-                        text: "8.5",
-                        style: TextStyle(fontSize: 15, color: Colors.black),
-                      ),
-                    ]),
-              ),
-            ),
-          ],
+              );
+            },
+            separatorBuilder: (context, index) {
+              return const SizedBox(
+                width: 10,
+              );
+            },
+            itemCount: widget._genres.length,
+          ),
+        ),
+        Container(
+          height: 23,
+          alignment: Alignment.center,
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          margin: const EdgeInsets.only(top: 10),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            color: AppColor.imdbColor,
+          ),
+          child: RichText(
+            text: TextSpan(
+                text: "IMDb ",
+                style: TextStyle(fontSize: 12, color: Colors.black),
+                children: [
+                  TextSpan(
+                    text: widget._imdb.toString(),
+                    style: TextStyle(fontSize: 15, color: Colors.black),
+                  ),
+                ]),
+          ),
         ),
         Row(
           children: [
             Container(
-              margin: const EdgeInsets.only(top: 19),
+              margin: const EdgeInsets.only(top: 10),
               child: Image.asset(
                 AppImage.icShare,
                 fit: BoxFit.fill,
@@ -86,10 +89,17 @@ class DetailTag extends StatelessWidget {
               width: 10,
             ),
             Container(
-              margin: const EdgeInsets.only(top: 19),
-              child: const Icon(
-                Icons.favorite,
-                color: Colors.white,
+              margin: const EdgeInsets.only(top: 10),
+              child: InkWell(
+                onTap: () {
+                  setState(() {
+                    _isLike = !_isLike;
+                  });
+                },
+                child: Icon(
+                  Icons.favorite,
+                  color: _isLike ? Colors.white : Colors.red,
+                ),
               ),
             ),
           ],

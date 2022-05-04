@@ -1,5 +1,5 @@
-class GetDetail {
-  GetDetail({
+class MovieDetail {
+  MovieDetail({
     this.adult,
     this.backdropPath,
     this.belongsToCollection,
@@ -27,7 +27,7 @@ class GetDetail {
     this.voteCount,
   });
 
-  GetDetail.fromJson(dynamic json) {
+  MovieDetail.fromJson(dynamic json) {
     adult = json['adult'];
     backdropPath = json['backdrop_path'];
     belongsToCollection = json['belongs_to_collection'];

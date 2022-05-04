@@ -32,10 +32,12 @@ class DetailText extends StatelessWidget {
       child: ReadMoreText(
         text,
         trimLines: 3,
-        colorClickableText: Colors.blue,
+        moreStyle: TextStyle(color: Colors.blue),
+        lessStyle: TextStyle(color: Colors.blue),
+        // colorClickableText: Colors.yellow,
         trimMode: TrimMode.Line,
-        trimCollapsedText: "Less",
-        trimExpandedText: "More",
+        trimCollapsedText: "More",
+        trimExpandedText: "Less",
       ),
     );
   }

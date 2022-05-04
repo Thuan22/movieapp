@@ -21,10 +21,15 @@ class UpcomingList extends StatelessWidget {
               child: InkWell(
                   onTap: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                MainScreen(screen: DetailScreen())));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MainScreen(
+                          screen: DetailScreen(
+                            id: list[index].id ?? 335787,
+                          ),
+                        ),
+                      ),
+                    );
                   },
                   child: Image.network(
                     "${baseUrl + list[index].posterPath.toString()}",

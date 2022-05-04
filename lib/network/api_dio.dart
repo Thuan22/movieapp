@@ -41,14 +41,14 @@ class DioCustom {
     }
   }
 
-  static Future<GetDetail?> getDetail() async {
+  static Future<MovieDetail?> getDetail(int idMovie) async {
     Dio dio = Dio();
-    int? idMovie;
+
     try {
       final response = await dio.get(
           "$baseUrl/$idMovie?api_key=e5f6c50b377e940a6a3bee54c9eb07c6&language=en-US");
       if (response.data != null) {
-        GetDetail detail = GetDetail.fromJson(response.data);
+        MovieDetail detail = MovieDetail.fromJson(response.data);
         return detail;
       } else {
         return null;
