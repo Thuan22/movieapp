@@ -12,7 +12,7 @@ class DioCustom {
       final response = await dio.get(
           "$baseUrl/popular?api_key=e5f6c50b377e940a6a3bee54c9eb07c6&language=en-US&page=1");
       if (response.data != null) {
-        print(response.data.toString());
+        // print(response.data.toString());
         GetPopular popular = GetPopular.fromJson(response.data);
         return popular;
       } else {
@@ -43,7 +43,6 @@ class DioCustom {
 
   static Future<MovieDetail?> getDetail(int idMovie) async {
     Dio dio = Dio();
-
     try {
       final response = await dio.get(
           "$baseUrl/$idMovie?api_key=e5f6c50b377e940a6a3bee54c9eb07c6&language=en-US");

@@ -1,26 +1,27 @@
 import 'package:flutter/material.dart';
 
 class BottomButton extends StatelessWidget {
-  const BottomButton({ Key? key,required this.image }) : super(key: key);
-final image;
+  const BottomButton({Key? key, required this.image}) : super(key: key);
+  final image;
   @override
   Widget build(BuildContext context) {
-    return 
-      Column(
+    return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
-
       children: [
         Image.asset(image),
-        Container(
+        SizedBox(
           height: 1,
-          width: 1,
-          decoration: BoxDecoration(shape: BoxShape.circle),
         ),
-
+        Container(
+          height: 5,
+          width: 5,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: Colors.white,
+          ),
+        ),
       ],
     );
   }
-    
-  
 }

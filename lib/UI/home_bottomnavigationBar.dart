@@ -16,12 +16,21 @@ class HomeBottomNavigationBar extends StatelessWidget {
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: const [
-          BottomButton(image: BottomNavigationItem.icHome),
-          BottomButton(image: BottomNavigationItem.icFavorite),
-          BottomButton(image: BottomNavigationItem.icTicket),
-          BottomButton(image: BottomNavigationItem.icAccount),
-          BottomButton(image: BottomNavigationItem.icShuffle),
+        children: [
+          Expanded(
+              flex: 1, child: BottomButton(image: BottomNavigationItem.icHome)),
+          Expanded(
+              flex: 1,
+              child: BottomButton(image: BottomNavigationItem.icFavorite)),
+          Expanded(
+              flex: 1,
+              child: BottomButton(image: BottomNavigationItem.icTicket)),
+          Expanded(
+              flex: 1,
+              child: BottomButton(image: BottomNavigationItem.icAccount)),
+          Expanded(
+              flex: 1,
+              child: BottomButton(image: BottomNavigationItem.icShuffle)),
         ],
       ),
     );
