@@ -17,30 +17,36 @@ class HomeBanner extends StatelessWidget {
       child: Swiper(
         loop: true,
         itemCount: list.length,
-        viewportFraction: 0.8,
-        scale: 0.9,
+        viewportFraction: 0.75,
+        scale: 0.85,
         itemBuilder: (context, index) {
-          return InkWell(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => MainScreen(
-                    screen: DetailScreen(
-                      id: list[index].id ?? 335787,
+          return Container(
+            padding: EdgeInsets.only(bottom: 20),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(40),
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MainScreen(
+                        screen: DetailScreen(
+                          id: list[index].id ?? 335787,
+                        ),
+                      ),
                     ),
-                  ),
+                  );
+                },
+                child: Image.network(
+                  '${baseUrl + list[index].posterPath.toString()}',
+                  fit: BoxFit.fill,
                 ),
-              );
-            },
-            child: Image.network(
-              '${baseUrl + list[index].posterPath.toString()}',
-              fit: BoxFit.fill,
+              ),
             ),
           );
         },
         pagination: const SwiperPagination(
-          margin: EdgeInsets.only(top: 57),
+          margin: EdgeInsets.only(top: 20),
           builder: DotSwiperPaginationBuilder(
             size: 6,
             activeSize: 6,

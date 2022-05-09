@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_finder/UI/detail_screen/components/button_part.dart';
 import 'package:flutter_movie_finder/UI/detail_screen/components/list_actors.dart';
@@ -32,81 +33,84 @@ class _DetailScreenState extends State<DetailScreen> {
     Size size = MediaQuery.of(context).size;
     print("$baseUrl${movieDetail?.posterPath}");
     return Scaffold(
-      body: Stack(
-        children: [
-          movieDetail?.posterPath != null
-              ? SizedBox(
-                  height: size.height,
-                  width: size.width,
-                  child: Image.network(
-                    "$baseUrl${movieDetail?.posterPath}",
-                    fit: BoxFit.fill,
-                  ),
-                )
-              : SizedBox(
-                  height: size.height,
-                  width: size.width,
-                  child: Image.asset(
-                    "assets/images/thor.png",
-                    fit: BoxFit.fill,
-                  ),
-                ),
-          Positioned(
-            top: size.height * 1 / 20,
-            left: size.height * 1 / 20,
-            child: InkWell(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: Image.asset(
-                AppImage.icBackButton,
-                color: AppColor.textColor,
-              ),
-            ),
-          ),
-          Positioned(
-            top: size.height * 1 / 2,
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Container(
-                height: size.height * 1 / 2,
-                decoration: const BoxDecoration(
-                  gradient: AppColor.backGroundColor,
-                  borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(50),
-                  ),
-                ),
-                padding: const EdgeInsets.symmetric(horizontal: 50),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    DetailTitle(movieDetail?.title ?? "1"),
-                    DetailTag(
-                      movieDetail?.genres ?? [],
-                      movieDetail?.voteAverage ?? 0.0,
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Stack(
+          children: [
+            movieDetail?.posterPath != null
+                ? SizedBox(
+                    height: size.height,
+                    width: size.width,
+                    child: Image.network(
+                      "$baseUrl${movieDetail?.posterPath}",
+                      fit: BoxFit.fill,
                     ),
-                    DetailText(movieDetail?.overview ?? "2"),
-                    DetailButton(),
-                    SizedBox(
-                      height: 10,
+                  )
+                : SizedBox(
+                    height: size.height,
+                    width: size.width,
+                    child: Image.asset(
+                      "assets/images/thor.png",
+                      fit: BoxFit.fill,
                     ),
-                    DetailActorList([
-                      "assets/images/thor.png",
-                      "assets/images/thor.png",
-                      "assets/images/thor.png",
-                      "assets/images/thor.png",
-                      "assets/images/thor.png",
-                      "assets/images/thor.png",
-                    ], "1", "2"),
-                  ],
+                  ),
+            Positioned(
+              top: size.height * 1 / 20,
+              left: size.height * 1 / 20,
+              child: InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Image.asset(
+                  AppImage.icBackButton,
+                  color: AppColor.textColor,
                 ),
               ),
             ),
-          ),
-        ],
+            Positioned(
+              top: size.height * 1 / 2,
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Container(
+                  height: size.height * 1 / 2,
+                  decoration: const BoxDecoration(
+                    gradient: AppColor.backGroundColor,
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(50),
+                    ),
+                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 50),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      DetailTitle(movieDetail?.title ?? "1"),
+                      DetailTag(
+                        movieDetail?.genres ?? [],
+                        movieDetail?.voteAverage ?? 0.0,
+                      ),
+                      DetailText(movieDetail?.overview ?? "2"),
+                      DetailButton(),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      DetailActorList([
+                        "assets/images/thor.png",
+                        "assets/images/thor.png",
+                        "assets/images/thor.png",
+                        "assets/images/thor.png",
+                        "assets/images/thor.png",
+                        "assets/images/thor.png",
+                      ], "1", "2"),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

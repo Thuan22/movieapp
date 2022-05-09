@@ -77,13 +77,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   UpcomingList(
                     upcoming.results ?? [],
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  const Divider(
-                    height: 2,
-                    color: Colors.grey,
-                  ),
                 ],
               ),
             ),

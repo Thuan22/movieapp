@@ -9,11 +9,8 @@ class MainScreen extends StatelessWidget {
     return Stack(
       children: [
         Positioned.fill(child: screen),
-        const Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: const HomeBottomNavigationBar()),
+        Positioned(
+            bottom: 0, left: 0, right: 0, child: HomeBottomNavigationBar()),
       ],
     );
   }
